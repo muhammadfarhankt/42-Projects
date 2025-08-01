@@ -6,9 +6,11 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:49:37 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/07/30 23:58:35 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/08/01 22:57:57 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strlen(const char *s)
 {

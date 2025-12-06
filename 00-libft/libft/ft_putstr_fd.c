@@ -6,9 +6,15 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:49:17 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/11/02 18:49:18 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/06 19:45:08 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+}

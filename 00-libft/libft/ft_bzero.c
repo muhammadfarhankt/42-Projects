@@ -6,9 +6,22 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:46:11 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/11/02 18:52:31 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/06 19:39:26 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	ft_bzero(void *s, size_t n)
+{
+	char	*p;
+	size_t	i;
+
+	i = 0;
+	p = (char *)s;
+	while (i < n)
+	{
+		p[i] = 0;
+		i++;
+	}
+}

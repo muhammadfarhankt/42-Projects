@@ -6,9 +6,29 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:46:03 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/11/02 18:52:28 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/06 20:07:06 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+int	ft_atoi(const char *str)
+{
+	int	sum;
+	int	sign;
 
+	sum = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		sum = (sum * 10) + (*str - '0');
+		str++;
+	}
+	return (sign * sum);
+}

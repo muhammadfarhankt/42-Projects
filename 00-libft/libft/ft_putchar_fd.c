@@ -6,9 +6,13 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:49:03 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/11/02 18:49:05 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/06 19:44:34 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

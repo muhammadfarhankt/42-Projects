@@ -6,7 +6,7 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:51:07 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/12/06 19:46:38 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/07 13:27:01 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,14 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len1;
-	size_t	len2;
-	char	*concat;
+	int		total_sz;
+	char	*str;
 
-	if (!s1 || !s2)
+	total_sz = ft_strlen(s1) + ft_strlen(s2);
+	str = (char *)malloc(sizeof(*str) * (total_sz + 1));
+	if (!str)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	concat = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!concat)
-		return (NULL);
-	ft_memcpy(concat, s1, len1);
-	ft_memcpy(concat + len1, s2, len2);
-	concat[len1 + len2] = '\0';
-	return (concat);
+	ft_strlcpy(str, s1, total_sz + 1);
+	ft_strlcat(str, s2, total_sz + 1);
+	return (str);
 }

@@ -6,61 +6,65 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:46:15 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/12/06 19:41:17 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/09 02:21:59 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_decimal_places(long n)
+static size_t	ft_itoa_len(long num)
 {
-	int	i;
+	size_t	len;
 
-	i = 0;
-	if (n <= 0)
+	len = 0;
+	if (num == 0)
+		return (1);
+	if (num < 0)
 	{
-		n *= -1;
-		i++;
+		len++;
+		num = -num;
 	}
-	while (n > 0)
+	while (num >= 1)
 	{
-		n /= 10;
-		i++;
+		len++;
+		num /= 10;
 	}
-	return (i);
+	return (len);
 }
 
-static char	*mount_str(char *str, long l, int i)
+static char	*ft_num_to_str(long num, char *str, size_t len)
 {
-	if (l == 0)
-	{
-		str[0] = '0';
-		return (str);
-	}
-	if (l < 0)
+	str = ft_calloc(len + 1, sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	if (num < 0)
 	{
 		str[0] = '-';
-		l *= -1;
+		num = -num;
 	}
-	while (l > 0)
+	len--;
+	while (len)
 	{
-		str[i--] = l % 10 + '0';
-		l /= 10;
+		str[len] = (num % 10) + '0';
+		num /= 10;
+		len--;
 	}
+	if (str[0] != '-')
+		str[0] = (num % 10) + '0';
 	return (str);
 }
 
 char	*ft_itoa(int n)
 {
-	char		*str;
-	int			i;
-	long		l;
+	long	num;
+	size_t	len;
+	char	*str;
 
-	l = n;
-	i = ft_decimal_places(l);
-	str = (char *)malloc(sizeof(char) * (i + 1));
-	if ((!str))
+	num = n;
+	len = ft_itoa_len(num);
+	str = 0;
+	str = ft_num_to_str(num, str, len);
+	if (!str)
 		return (NULL);
-	str[i--] = '\0';
-	return (mount_str(str, l, i));
+	return (str);
 }

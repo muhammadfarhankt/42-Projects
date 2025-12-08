@@ -6,13 +6,15 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 22:32:58 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/12/06 19:49:06 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/09 02:28:27 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
-		return (c - 32);
+		c -= 32;
 	return (c);
 }

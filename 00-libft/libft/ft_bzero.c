@@ -6,19 +6,21 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:46:11 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/12/07 10:56:30 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/09 02:19:30 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t len)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*p;
+	unsigned char	*ptr;
 
-	p = (char *)s;
-	while (len-- > 0)
+	ptr = (unsigned char *)s;
+	while (n != 0)
 	{
-		*(p++) = 0;
+		*ptr = '\0';
+		ptr++;
+		n--;
 	}
 }

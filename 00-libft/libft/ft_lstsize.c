@@ -6,7 +6,7 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:46:50 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/12/06 19:43:29 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/09 02:23:28 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int	count;
+	int	i;
 
-	count = 0;
+	i = 0;
 	while (lst)
 	{
-		count++;
 		lst = lst->next;
+		i++;
 	}
-	return (count);
+	return (i);
 }

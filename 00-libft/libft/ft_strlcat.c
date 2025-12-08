@@ -6,29 +6,34 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:51:12 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/12/06 19:46:48 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/09 02:25:44 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	dest_len;
-	size_t	src_len;
-	size_t	sum;
+	size_t	j;
+	size_t	res_d;
+	size_t	res_s;
 
-	i = 0;
-	sum = 0;
-	dest_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	if (size > dest_len)
-		sum = dest_len + src_len;
+	i = ft_strlen(dst);
+	j = 0;
+	res_d = i;
+	res_s = ft_strlen(src);
+	if (dstsize < 1)
+		return (res_s + dstsize);
+	while (src[j] && i < dstsize - 1)
+	{
+		dst[i] = src[j];
+		i++;
+		j++;
+	}
+	dst[i] = '\0';
+	if (dstsize < res_d)
+		return (res_s + dstsize);
 	else
-		return (src_len + size);
-	while (src[i] && (dest_len + 1) < size)
-		dst[dest_len++] = src[i++];
-	dst[dest_len] = '\0';
-	return (sum);
+		return (res_d + res_s);
 }

@@ -6,7 +6,7 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:46:11 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/12/07 10:28:42 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/09 02:20:03 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*ptr;
+	void	*r;
 
-	if (size != 0 && count != 0)
-	{
-		if (count > SIZE_MAX / size)
-			return (NULL);
-	}
-	ptr = malloc(count * size);
-	if (ptr == NULL)
+	if (size && count && (INT_MAX / count) < size)
 		return (NULL);
-	ft_memset(ptr, 0, count * size);
-	return (ptr);
+	r = (void *)malloc(count * size);
+	if (!r)
+		return (NULL);
+	ft_bzero(r, count * size);
+	return (r);
 }

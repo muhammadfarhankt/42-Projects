@@ -6,7 +6,7 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:51:42 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/12/07 12:25:44 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/09 02:28:02 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,34 @@
 
 static int	is_set(char c, char const *set)
 {
-	while (*set)
+	int	i;
+
+	i = 0;
+	while (set[i])
 	{
-		if (c == *set)
+		if (set[i] == c)
 			return (1);
-		set++;
+		i++;
 	}
 	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	len;
-	size_t	sublen;
-	char	*trimmed;
-	size_t	i;
-	size_t	j;
+	size_t	start;
+	size_t	end;
 
-	len = ft_strlen(s1);
-	i = 0;
-	while (s1[i] && is_set(s1[i], set))
-		i++;
-	j = len - 1;
-	while (j > i && is_set(s1[j], set))
-		j--;
-	sublen = j - i;
-	trimmed = (char *)malloc(sizeof(char) * (sublen + 2));
-	if (!trimmed)
-		return (NULL);
-	ft_memcpy(trimmed, s1 + i, sublen + 1);
-	trimmed[sublen + 1] = '\0';
-	return (trimmed);
+	if (!s1)
+		return (ft_strdup(""));
+	if (!set)
+		return (ft_strdup(s1));
+	start = 0;
+	end = ft_strlen(s1);
+	while (is_set(s1[start], set))
+		start++;
+	if (start == end)
+		return (ft_strdup(""));
+	while (is_set(s1[end - 1], set))
+		end--;
+	return (ft_substr(s1, start, end - start));
 }

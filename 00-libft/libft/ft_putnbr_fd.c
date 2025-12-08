@@ -6,7 +6,7 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:49:13 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/12/06 19:44:57 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/09 02:24:35 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long int	l;
+	long	nbr;
 
-	l = n;
-	if (l < 0)
+	nbr = n;
+	if (nbr < 0)
 	{
 		ft_putchar_fd('-', fd);
-		l *= -1;
+		nbr = -nbr;
 	}
-	if (l > 9)
-		ft_putnbr_fd(l / 10, fd);
-	ft_putchar_fd(l % 10 + '0', fd);
+	if (nbr >= 10)
+	{
+		ft_putnbr_fd(nbr / 10, fd);
+		ft_putchar_fd((nbr % 10) + '0', fd);
+	}
+	else
+		ft_putchar_fd(nbr + '0', fd);
 }

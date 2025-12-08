@@ -6,28 +6,21 @@
 /*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 19:46:00 by mfarhan           #+#    #+#             */
-/*   Updated: 2025/12/06 19:49:21 by mfarhan          ###   ########.fr       */
+/*   Updated: 2025/12/09 02:25:14 by mfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup(const char *s1)
 {
-	char	*dest;
-	int		i;
-	int		len;
+	char	*s2;
+	size_t	len;
 
-	len = ft_strlen(s);
-	dest = (char *) malloc(sizeof(char) * (len + 1));
-	if (dest == NULL)
+	len = ft_strlen(s1) + 1;
+	s2 = malloc(len * sizeof(char));
+	if (!s2)
 		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		dest[i] = s[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	ft_strlcpy(s2, s1, len);
+	return (s2);
 }

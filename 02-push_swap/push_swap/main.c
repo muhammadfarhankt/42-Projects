@@ -1,0 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfarhan <mfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/30 17:19:27 by mfarhan           #+#    #+#             */
+/*   Updated: 2026/09/30 17:19:28 by mfarhan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	make_stack(t_node **a, char **dc, int i)
+{
+	int		j;
+	long	nbr;
+	char	**str;
+
+	i = 1;
+	while (dc[i])
+	{
+		str = ft_split(dc[i], ' ', 0, 0);
+		if (!str)
+			handle_error(a, str);
+		j = 0;
+		while (str[j])
+		{
+			nbr = ft_atoi(str[j], 0, str, a);
+			if (dup_checker(*a, (int)nbr))
+				handle_error(a, str);
+			(ft_lstadd_back(a, ft_lstnew((int)nbr)));
+			j++;
+		}
+		if (j == 0)
+			handle_error(a, str);
+		free_the_split_v2(str);
+		i++;
+	}
+}
+
+int	main(int ac, char *dc[])
+{
+	t_node	*a;
+	t_node	*b;
+
+	a = NULL;
+	b = NULL;
+	if (ac == 1)
+		return (0);
+	if (ac == 2 && dc[1][0] == '\0')
+		(write(2, "Error\n", 6), exit(1));
+	make_stack(&a, dc, 0);
+	if (not_sorted(&a))
+	{
+		if (ft_lstsize(a) <= 5)
+			handle_five(&a, &b);
+		else
+			sort(&a, &b);
+	}
+	ft_lstclear(&a);
+}
